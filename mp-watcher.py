@@ -51,7 +51,7 @@ import pyperclip
 import requests
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-MEMORY_PLUGIN_TOKEN = "PASTE_YOUR_MEMORYPLUGIN_TOKEN_HERE"
+MEMORY_PLUGIN_TOKEN = os.environ.get("MEMORY_PLUGIN_TOKEN", "")
 POLL_INTERVAL       = 0.5    # seconds between clipboard checks
 FIRE_DELAY          = 2.0    # seconds to wait before firing
 BASE_URL            = "https://www.memoryplugin.com"
@@ -446,8 +446,10 @@ def process(text):
 # ════════════════════════════════════════════════════════════════════════════
 
 def main():
-    if MEMORY_PLUGIN_TOKEN == "PASTE_YOUR_TOKEN_HERE":
-        print("ERROR: Set MEMORY_PLUGIN_TOKEN in mp-watcher.py before running.")
+    if not MEMORY_PLUGIN_TOKEN:
+        print("ERROR: Set the MEMORY_PLUGIN_TOKEN environment variable before running.")
+        print("  Windows: set MEMORY_PLUGIN_TOKEN=your_token_here")
+        print("  Or create a .env file and load it before launching.")
         sys.exit(1)
 
     print("── MemoryPlugin + Understand-Anything Clipboard Watcher ─────────")
