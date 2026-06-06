@@ -452,11 +452,11 @@ def main():
         print("  Or create a .env file and load it before launching.")
         sys.exit(1)
 
-    print("── MemoryPlugin + Understand-Anything Clipboard Watcher ─────────")
+    print("-- MemoryPlugin + Understand-Anything Clipboard Watcher ---------")
     print(f"  Poll: {POLL_INTERVAL}s   Fire delay: {FIRE_DELAY}s   Ctrl-C to stop")
     print("  Triggers: [mp] blocks (MemoryPlugin) and [ua] blocks (knowledge graphs)")
     print("  Copy ANYTHING ELSE within 2s to cancel the countdown.")
-    print("─────────────────────────────────────────────────────────────────\n")
+    print("------------------------------------------------------------------\n")
 
     try:
         last_seen = pyperclip.paste()
